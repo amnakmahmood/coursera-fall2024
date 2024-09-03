@@ -1,5 +1,5 @@
 /* Global Styles */
-body {
+body, .menu-title {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -18,91 +18,112 @@ body {
     border: 1px solid black;
     padding: 20px;
     margin: 10px;
-    background-color: #7e7e7e;
+    background-color: #a8a8a8;
     position: relative;
-    overflow: hidden;
     height: 200px;
     box-sizing: border-box;
+    overflow: hidden; /* Hide overflow by default */
+}
+
+.box:hover {
+    overflow-y: auto;  /* Show vertical scrollbar on hover */
+}
+
+.categories-title {
+    text-align: left;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 10px;
 }
 
 /* Title Styling */
-.title {
-    background-color: #5f5f5f;
+.title, .mobile-title {
+    background-color: #858383;
     border: 1px solid black;
-    padding: 5px 10px;
+    padding: 5px 0; /* Adjusted padding */
     position: absolute;
     top: 0;
     right: 0;
     font-size: 1.25em;
-    background-color: #f0ad4e; /* default title color for desktop */
+    background-color: #f0ad4e;
+    text-align: center;
+    white-space: normal; /* Allow wrapping */
+    word-wrap: break-word;
 }
 
-.chicken .title {
+.chicken .title, .chicken .mobile-title  {
     background-color: #f4a896;
     font-weight: bold;
 }
 
-.beef .title {
+.beef .title, .beef .mobile-title {
     background-color: #a83f39;
     color: white;
     font-weight: bold;
 }
 
-.sushi .title {
+.sushi .title, .sushi .mobile-title {
     background-color: #f5d67c;
     font-weight: bold;
 }
 
 .content {
-    padding-top: 40px;
-    height: 100%;
-    overflow: hidden;
+    padding-top: 0; /* Adjust for new title height */
+    height: calc(100% - 50px); /* Height minus title height */
 }
 
 /* Desktop View */
 @media (min-width: 992px) {
     .container {
-        flex-direction: row; /* Align sections in a row */
+        flex-direction: row;
     }
 
     .box {
-        width: calc(33.33% - 20px); /* Ensure each box takes equal space */
+        width: calc(33.33% - 20px);
+    }
+    .categories-title, .mobile-title {
+        display: none;
     }
 }
 
 /* Tablet View */
 @media (min-width: 768px) and (max-width: 991px) {
     .box {
-        width: calc(50% - 20px); /* First two boxes share the first row equally */
+        width: calc(50% - 20px);
     }
 
     .box:nth-child(1), .box:nth-child(2) {
-        width: calc(50% - 20px); /* Ensure the first two boxes are equal in size */
+        width: calc(50% - 20px);
     }
 
     .box:nth-child(3) {
-        width: 100%; /* The third box takes up the full width of the second row */
+        width: 100%;
+    }
+    .categories-title, .mobile-title {
+        display: none;
     }
 }
 
 /* Mobile View */
 @media (max-width: 767px) {
     .box {
-        width: 100%; /* Each section takes up the full width */
+        width: 100%;
         margin: 5px 0;
     }
 
-    .title {
-        width: 40%; /* Make title fill the width */
-        text-align: center; /* Center the text */
-        padding: 10px;
-        position: relative;
-        float: right;
+    .mobile-title {
+        width: 100%; /* Make title fill the width */
+        padding: 15px 0; /* Remove left and right padding */
         background-color: inherit;
+        overflow: hidden;
     }
 
     .content {
-        padding-top: 80px; /* Ensure proper spacing */
-        margin-top: -100px;
+        padding-top: 50px; /* Adjust for new title height */
+        margin-top: 0;
+    }
+
+    .menu-title, .title {
+        display: none;
     }
 }
