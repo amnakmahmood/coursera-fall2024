@@ -1,0 +1,33 @@
+
+.box {
+    background-color: #b5b5b5; /* Light grey background */
+    margin: 40px 0; /* Increased margin for more spacing */
+    border: 1px solid black;
+}
+.text-center {
+    text-align: center;
+}
+
+.navbar-collapse {
+    background-color: rgb(79, 113, 225);
+    width: 100%;
+}
+
+.navbar-nav > li > a {
+    color: #333;
+    padding: 15px 20px;
+}
+
+@media (max-width: 768px) {
+    .navbar-collapse {
+        position: relative;
+        width: 100%;
+    }
+    .navbar-collapse.in {
+        height: auto;
+        max-height: none;
+    }
+    body {
+        padding-top: 50px; /* Adjust the padding so content moves down */
+    }
+}
