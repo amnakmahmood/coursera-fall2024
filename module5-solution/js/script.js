@@ -188,7 +188,7 @@ function buildStarsViewHtml(aboutHtml) {
   let html = '';
 
   // Loop for filled stars
-  for (var i = 0; i < filledStars; i++) {
+  for (var i = 0; i < filledStars+1; i++) {
     html += insertProperty(aboutHtml, `class${i + 1}`, "fa fa-star");
   }
   
@@ -202,7 +202,7 @@ function buildStarsViewHtml(aboutHtml) {
 }
 
 function randomStars() {
-  return Math.floor(Math.random() * 5) + 1;
+  return Math.floor(Math.random() * 5);
 }
 
 
