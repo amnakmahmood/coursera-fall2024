@@ -182,19 +182,25 @@ function buildAndShowAboutHTML () {
 
 function buildStarsViewHtml(aboutHtml) {
   var totalStars = randomStars();
+  // Ensure totalStars is between 0 and 5
+  totalStars = Math.max(0, Math.min(totalStars, 5));
+  
   // Calculate filled and empty stars
-  var filledStars = totalStars - 1; // one empty star
+  var filledStars = totalStars; // number of filled stars
+  var emptyStars = 5 - filledStars; // number of empty stars
   var output = "<section class='col'>";
   let html = '';
 
   // Loop for filled stars
-  for (var i = 0; i < filledStars+1; i++) {
+  for (var i = 0; i < filledStars; i++) {
     html += insertProperty(aboutHtml, `class${i + 1}`, "fa fa-star");
   }
   
-  // Add the empty star last
-  html += insertProperty(aboutHtml, `class${filledStars + 1}`, "fa fa-star-o");
-  
+  // Loop for empty stars
+  for (var j = 0; j < emptyStars; j++) {
+    html += insertProperty(aboutHtml, `class${filledStars + j + 1}`, "fa fa-star-o");
+  }
+
   output += html;
   output += ` ${totalStars}-star rating`;
   output += "</section>";
@@ -202,8 +208,9 @@ function buildStarsViewHtml(aboutHtml) {
 }
 
 function randomStars() {
-  return Math.floor(Math.random() * 5);
+  return Math.floor(Math.random() * 6); // Adjust to get a range of 0 to 5
 }
+
 
 
 // Builds HTML for the categories page based on the data
