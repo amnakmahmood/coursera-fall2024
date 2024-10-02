@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="LunchCheck">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lunch Check</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body ng-controller="LunchCheckController as lunchCtrl">
+    <div class="container">
+        <h2>Enter Your Lunch Items</h2>
+        <!-- Empty items (e.g., , ,) are not counted as valid items -->
+        <input type="text" ng-model="lunchCtrl.items" 
+               ng-class="{'green-border': lunchCtrl.messageType === 'success', 'red-border': lunchCtrl.messageType === 'error'}"
+               placeholder="List comma-separated items...">
+        <button ng-click="lunchCtrl.checkItems()">Check</button>
+        <div class="output" 
+             ng-class="{'green-text': lunchCtrl.messageType === 'success', 'red-text': lunchCtrl.messageType === 'error'}">
+            {{ lunchCtrl.message }}
+        </div>
+    </div>
+
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
