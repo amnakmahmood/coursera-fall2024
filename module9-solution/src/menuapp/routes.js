@@ -17,13 +17,13 @@
       // Home page
       .state('home', {
         url: '/',
-        templateUrl: 'src/home.template.html'
+        templateUrl: 'src/templates/home.template.html'
       })
 
       // Categories page
       .state('categories', {
         url: '/categories',
-        templateUrl: 'src/categories.template.html',
+        templateUrl: 'src/templates/categories.template.html',
         controller: 'CategoriesController as categoriesCtrl',
         resolve: {
           categories: ['MenuDataService', function (MenuDataService) {
@@ -35,7 +35,7 @@
       // Items page
       .state('items', {
         url: '/items/{categoryShortName}',
-        templateUrl: 'src/items.template.html',
+        templateUrl: 'src/templates/items.template.html',
         controller: 'ItemsController as itemsCtrl',
         resolve: {
           items: ['$stateParams', 'MenuDataService', function ($stateParams, MenuDataService) {
