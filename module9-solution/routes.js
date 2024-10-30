@@ -1,36 +1,43 @@
-
 (function () {
   'use strict';
 
-  angular.module('MenuApp')
-    .config(RoutesConfig);
+  angular.module('MenuApp').config(RoutesConfig);
 
   RoutesConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
-  function RoutesConfig($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/');
 
-    $stateProvider
-      .state('home', {
-        url: '/',
-        template: '<h1>Welcome to our Restaurant</h1>'
-      })
-      .state('categories', {
-        url: '/categories',
-        component: 'categories',
-        resolve: {
-          categories: ['MenuDataService', function (MenuDataService) {
-            return MenuDataService.getAllCategories();
-          }]
-        }
-      })
-      .state('items', {
-        url: '/items/{categoryShortName}',
-        component: 'items',
-        resolve: {
-          items: ['MenuDataService', '$transition$', function (MenuDataService, $transition$) {
-            return MenuDataService.getItemsForCategory($transition$.params().categoryShortName);
-          }]
-        }
-      });
+
+  function RoutesConfig($stateProvider, $urlRouterProvider) {
+      $urlRouterProvider.otherwise('/');
+
+      $stateProvider
+          .state('home', {
+              url: '/',
+              templateUrl: 'templates/home.template.html'
+          })
+          .state('categories', {
+              url: '/categories',
+              templateUrl: 'templates/categories.template.html',
+              controller: 'categoriesController as categoriesCtrl',
+              resolve: {
+                  categories: ['MenuDataService', function (MenuDataService) {
+                      return MenuDataService.getAllCategories();
+                  }]
+              }
+          })
+          .state('items', {
+              url: '/categories/{categoryShortName}',
+              templateUrl: 'templates/items.template.html',
+              controller: 'itemsController as itemsCtrl',
+              params: {
+                  categoryShortName: null,
+                  categoryName: null
+
+              },
+              resolve: {
+                  items: ['$stateParams', 'MenuDataService', function ($stateParams, MenuDataService) {
+                      return MenuDataService.getItemsForCategory($stateParams.categoryShortName);
+                  }]
+              }
+          });
   }
 })();
