@@ -1,41 +1,39 @@
-
 <!DOCTYPE html>
 <html lang="en" ng-app="MenuApp">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Restaurant Menu</title>
-  <link rel="stylesheet" href="styles/bootstrap.min.css">
-  <script src="lib/angular.min.js"></script>
-  <script src="lib/angular-ui-router.min.js"></script>
-  <script src="src/menuapp/menuapp.module.js"></script>
-  <script src="src/menudata/data.module.js"></script>
-  <script src="src/menudata/menudata.service.js"></script>
-  <script src="src/menuapp/categories.component.js"></script>
-  <script src="src/menuapp/items.component.js"></script>
-  <script src="src/menuapp/routes.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Restaurant Menu App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./styles/bootstrap.min.css">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <script src="./lib/angular.min.js"></script>
+    <script src="./lib/angular-ui-router.min.js"></script>
 </head>
+
 <body>
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" ui-sref="home">Restasurant Menu</a>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="navbar-brand" ui-sref="home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" ui-sref="categories">Categories</a>
-          </li>
-        </ul>
-      </div>
+    <div class="container main " >
+        <div class="header headerComponent">
+            <h3 class="">Restaurant Menu App</h3>
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li ui-sref-active="active" ui-sref="home" role="presentation"><a href="">Home</a></li>
+                    <li ui-sref-active="active" ui-sref="categories" role="presentation"><a href="">Categories</a></li>
+                </ul>
+            </nav>
+        </div>
+        <ui-view></ui-view>
     </div>
-  </nav>
-
-  <div class="container">
-    <div ui-view></div>
-  </div>
-
+    <script src="./modules/menuapp.module.js"></script>
+    <script src="./modules/data.module.js"></script>
+    <script src="./controllers/categories.controller.js"></script>
+    <script src="./controllers/items.controller.js"></script>
+    <script src="./components/categories.component.js"></script>
+    <script src="./components/items.component.js"></script>
+    <script src="./routes.js"></script>
+    <script src=".//menudata.service.js"></script>
 </body>
+
 </html>
