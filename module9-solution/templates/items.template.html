@@ -1,0 +1,9 @@
+
+<div class="items-container">
+    <h3>Items in Category: {{ itemsCtrl.categoryName }}</h3>
+    <ul>
+        <li ng-repeat="item in itemsCtrl.items">
+            <strong>{{ item.name }}</strong>: {{ item.description }}
+        </li>
+    </ul>
+</div>

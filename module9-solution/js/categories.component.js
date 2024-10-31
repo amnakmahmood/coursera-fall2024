@@ -1,0 +1,18 @@
+(function() {
+'use strict';
+
+
+(function() {
+    'use strict';
+
+    angular.module('MenuApp')
+    .component('categories', {
+        templateUrl: 'categories.template.html',
+        bindings: {
+            items: '<'
+        }
+    });
+})();
+
+
+})();

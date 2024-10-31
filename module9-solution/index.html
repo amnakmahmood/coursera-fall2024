@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-ui-router.min.js"></script>
+    <script src="js/menuapp.module.js"></script>
+    <script src="js/data.module.js"></script>
+    <script src="js/menudata.service.js"></script>
+    <script src="js/categories.controller.js"></script>
+    <script src="js/items.controller.js"></script>
+    <script src="js/categories.component.js"></script>
+    <script src="js/items.component.js"></script>
+    <script src="js/routes.js"></script>
+    <style>
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+    </style>
+</head>
+<body ng-app="MenuApp">
+
+    <header>
+        <h1>Welcome to Our Restaurant</h1>
+    </header>
+    
+    <!-- Navigation buttons -->
+    <a ui-sref="categories" class="btn btn-primary">View Categories</a>
+    <a href="index.html" class="btn btn-secondary">Home</a>
+
+    <!-- View container -->
+    <div ui-view></div>
+
+</body>
+</html>
